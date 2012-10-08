@@ -1,0 +1,1 @@
+exports.SYSTEM_ROOT = "/var/www/mike_tokyo/";

@@ -1,13 +1,9 @@
 var http = require("http");
 var url = require("url");
 
-var __CONTROLLER__ = "";
-var __ACTION__ = "";
-
-
 (function start() {
   function onRequest(request, response) {
-        var httpHeaders = require("./system/server/httpHeaders.js");
+    var httpHeaders = require("./system/server/httpHeaders.js");
 
     try{
 
@@ -24,8 +20,8 @@ var __ACTION__ = "";
         share.APP_PATH = env.SYSTEM_ROOT + "app/";
         share.LIBRARY_PATH = env.SYSTEM_ROOT + "system/";
 
-        __CONTROLLER__ = router.default.controller;
-        __ACTION__ = router.default.action;
+        var __CONTROLLER__ = router.default.controller;
+        var __ACTION__ = router.default.action;
 
         if(pathname == "/favicon.ico"){
           response.end();
