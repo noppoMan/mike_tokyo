@@ -1,0 +1,1 @@
+exports.SYSTEM_ROOT = "/Users/yuki/www/mike_tokyo/";
