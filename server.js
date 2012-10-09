@@ -61,35 +61,12 @@ var url = require("url");
            return;
         }
 
+        var view = require("./system/server/view");
+        view.setLayoutPath(controllerInstance.prototype.layoutPath);
+        view.setTemplatePath(controllerInstance.prototype.renderPath);
+        console.log("200 OK " + controllerInstance.prototype.headers.userAgent);
+        view.render(response, assignVars);
 
-        var fs = require("fs");
-        var ejs = require("ejs");
-
-        var renderPath = share.APP_PATH + "views/pc/";
-        var createRenderPath = function(path){
-          if(path !== undefined){
-            renderPath += pathh;
-          }else{
-            renderPath += __ACTION__ + ".ejs";
-          }
-          return renderPath;
-        }
-
-        var layoutPath = share.APP_PATH + "views/layout/base.ejs";
-
-        fs.readFile(createRenderPath(controllerInstance.prototype.renderPath),"utf8", function(err,data){
-          var html = ejs.render(data,{"locals":assignVars});
-
-          (function(){
-            fs.readFile(layoutPath,"utf8", function(err,data2){
-              var _html = ejs.render(data2,{content : html, applicationName : config.applicationName});
-              response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-              console.log("200 OK " + controllerInstance.prototype.headers.userAgent);
-              response.end(_html);
-            });
-          })();
-
-        });
     }catch(e){
       console.dir(e);
       httpHeaders.status500(controllerInstance);

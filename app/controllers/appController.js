@@ -11,6 +11,7 @@ appController = {
 	},
 
 	indexAction : function(){
+		this.prototype.layout("base");
 		return {applicationName:"MikeTokyo" };
 	},
 

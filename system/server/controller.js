@@ -1,8 +1,8 @@
 var controller = function(){
 	this.request;
 	this.response;
-	this.renderPath;
-	this.layoutPath;
+	this.renderPath = "";
+	this.layoutPath = "base";;
 	this.headers;
 };
 
@@ -29,7 +29,7 @@ controller.render = function(path){
 }
 
 controller.layout = function(path){
-	this.layoutPath = path + ".ejs";
+	this.layoutPath = path;
 }
 
 module.exports = controller;
