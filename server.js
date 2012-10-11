@@ -50,14 +50,21 @@ var url = require("url");
             return;
         }
 
-        controllerInstance.prototype.setRequestAndResponse(request, response);
+
+        var ua = require('user-agent');
+
+        controllerInstance.prototype.request = request;
+        controllerInstance.prototype.response = response;
+        controllerInstance.prototype.headers = request.headers;
+        controllerInstance.prototype.headers.userAgent = ua.parse(request.headers['user-agent']).full;
+
         controllerInstance.init();
 
         try{
           var assignVars = eval("controllerInstance." + __ACTION__ + "Action()");
         }catch(e){
            console.dir(e);
-           httpHeaders.status404(controllerInstance);
+           httpHeaders.status404(response);
            return;
         }
 
@@ -66,13 +73,12 @@ var url = require("url");
         view.setTemplatePath(controllerInstance.prototype.renderPath);
         console.log("200 OK " + controllerInstance.prototype.headers.userAgent);
         view.render(response, assignVars);
-
     }catch(e){
       console.dir(e);
-      httpHeaders.status500(controllerInstance);
+      httpHeaders.status500(response);
       return;
     }
   }
-  http.createServer(onRequest).listen(8888);
+  http.createServer(onRequest).listen(3000);
   console.log("Server has started.");
 })();

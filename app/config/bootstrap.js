@@ -3,7 +3,7 @@ var bootstrap = {
 	,init : function(req, res){
 		//console.log(req.headers.host);
 		switch(req.headers.host){
-			case "localhost:8888":
+			case "localhost:3000":
 			case "localhost":
 				this.env = "localhost"
 				break;

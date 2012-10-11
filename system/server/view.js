@@ -26,6 +26,8 @@ var view = {
 		var templatePath = this.templatePath;
 		var layoutPath = this.layoutPath;
 
+		console.log(templatePath);
+
 		fs.readFile(templatePath,"utf8", function(err,data){
         	var html = ejs.render(data,vars);
 	   		fs.readFile(layoutPath,"utf8", function(err,data2){
@@ -38,7 +40,7 @@ var view = {
 	},
 	createRenderPath : function(path){
 	  var templatePath = share.APP_PATH + "views/pc/";
-	  if(path !== undefined){
+	  if(path !== undefined && path !== null){
 	    return templatePath += path;
 	  }else{
 	    return templatePath += share.__ACTION__ + this.viewExt;

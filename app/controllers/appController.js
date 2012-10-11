@@ -7,11 +7,10 @@ appController = {
 	prototype : require("../../system/server/controller"),
 
 	init : function(){
-
+		this.prototype.layout("base");
 	},
 
 	indexAction : function(){
-		this.prototype.layout("base");
 		return {applicationName:"MikeTokyo" };
 	},
 
