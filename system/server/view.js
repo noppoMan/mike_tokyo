@@ -1,6 +1,7 @@
 var fs = require("fs");
 var ejs = require("ejs");
 var share = require("./share");
+var Response = require("./response");
 
 var view = {
 
@@ -15,25 +16,16 @@ var view = {
 	set : function(obj){
 		this.templateVars = obj;
 	},
-	setLayoutPath : function(path){
-		this.layoutPath = share.APP_PATH + "views/layout/" + path + this.viewExt
-	},
-	setTemplatePath : function(path){
-		this.templatePath = this.createRenderPath(path);
-	},
-	render : function(response, vars){
+	render : function(layoutPath, templatePath, vars, response){
 
-		var templatePath = this.templatePath;
-		var layoutPath = this.layoutPath;
-
-		console.log(templatePath);
-
+		var templatePath = this.createRenderPath(templatePath);
+		var layoutPath = share.APP_PATH + "views/layout/" + layoutPath + this.viewExt;
+		
 		fs.readFile(templatePath,"utf8", function(err,data){
-        	var html = ejs.render(data,vars);
+        	var actionHtml = ejs.render(data,vars);
 	   		fs.readFile(layoutPath,"utf8", function(err,data2){
-	          var _html = ejs.render(data2,{content : html, applicationName : share.config.applicationName});
-	          response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-	          response.end(_html);
+	          var finalOutput = ejs.render(data2,{content : actionHtml, applicationName : share.config.applicationName});
+        	  Response.output(200, "html", finalOutput);
 	        });	
 
 	    });

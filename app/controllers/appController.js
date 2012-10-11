@@ -1,23 +1,22 @@
 //ライブラリインポート
 var share = require("../../system/server/share");
 
-appController = {
 
-	//extends
-	prototype : require("../../system/server/controller"),
+function extend(child, superClass){
+	child.prototype = new superClass();
+	return child;
+}
 
-	init : function(){
-		this.prototype.layout("base");
-	},
+function appController(){}
+appController = extend(appController, require("../../system/server/controller"));
 
-	indexAction : function(){
-		return {applicationName:"MikeTokyo" };
-	},
+appController.prototype.init = function(){
+	this.layout("base");
+}
 
-	archiveAction : function(){
-
-	}
-};
+appController.prototype.indexAction = function(){
+	return {applicationName:"MikeTokyo" };
+}
 
 module.exports = appController;
 

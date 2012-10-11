@@ -3,9 +3,7 @@ var url = require("url");
 
 (function start() {
   function onRequest(request, response) {
-    var httpHeaders = require("./system/server/httpHeaders.js");
-
-    try{
+    //try{
 
         //アプリケーション初期化
         var router = require("./app/config/router.js");
@@ -19,6 +17,7 @@ var url = require("url");
         share.SYSTEM_ROOT = env.SYSTEM_ROOT;
         share.APP_PATH = env.SYSTEM_ROOT + "app/";
         share.LIBRARY_PATH = env.SYSTEM_ROOT + "system/";
+        require("./system/server/response").setResponseObject(response);
 
         var __CONTROLLER__ = router.default.controller;
         var __ACTION__ = router.default.action;
@@ -43,20 +42,21 @@ var url = require("url");
         var controllerInstance = null;
 
         try{
-          controllerInstance = require("./app/controllers/" + className);
+          var _controller = require("./app/controllers/" + className);
+          controllerInstance = new _controller();
         }catch(e){
             console.dir(e);
-            httpHeaders.status404(controllerInstance);
+            //httpHeaders.status404(controllerInstance);
             return;
         }
 
 
         var ua = require('user-agent');
 
-        controllerInstance.prototype.request = request;
-        controllerInstance.prototype.response = response;
-        controllerInstance.prototype.headers = request.headers;
-        controllerInstance.prototype.headers.userAgent = ua.parse(request.headers['user-agent']).full;
+        controllerInstance.request = request;
+        controllerInstance.response = response;
+        controllerInstance.headers = request.headers;
+        controllerInstance.headers.userAgent = ua.parse(request.headers['user-agent']).full;
 
         controllerInstance.init();
 
@@ -69,15 +69,13 @@ var url = require("url");
         }
 
         var view = require("./system/server/view");
-        view.setLayoutPath(controllerInstance.prototype.layoutPath);
-        view.setTemplatePath(controllerInstance.prototype.renderPath);
-        console.log("200 OK " + controllerInstance.prototype.headers.userAgent);
-        view.render(response, assignVars);
-    }catch(e){
-      console.dir(e);
-      httpHeaders.status500(response);
-      return;
-    }
+        console.log("200 OK " + controllerInstance.headers.userAgent);
+        view.render(controllerInstance.layoutPath, controllerInstance.renderPath, assignVars, response);
+    //}catch(e){
+      //console.dir(e);
+      //httpHeaders.status500(response);
+      //return;
+    //}
   }
   http.createServer(onRequest).listen(3000);
   console.log("Server has started.");
