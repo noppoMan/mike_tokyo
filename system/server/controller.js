@@ -6,6 +6,9 @@ controller.prototype = {
 	renderPath : null,
 	layoutPath : "base",
 
+	init : function(){
+
+	},
 	redirect : function(){
 		this.response.writeHead(302, {
 	  		'Location': url
