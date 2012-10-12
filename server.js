@@ -6,7 +6,8 @@ var url = require("url");
     //try{
 
         //アプリケーション初期化
-        require("./system/server/response").setResponseObject(response);
+        var Response = require("./system/server/response")
+        Response.setResponseObject(response);
         
         var pathname = url.parse(request.url).pathname;
         var bootstrap = require("./app/config/bootstrap");
@@ -50,7 +51,7 @@ var url = require("url");
           controllerInstance = new _controller();
         }catch(e){
             console.dir(e);
-            //httpHeaders.status404(controllerInstance);
+            Response.output(404, "html", "404 Not Found");
             return;
         }
 
@@ -67,8 +68,8 @@ var url = require("url");
         try{
           var assignVars = eval("controllerInstance." + __ACTION__ + "Action()");
         }catch(e){
-           //console.dir(e);
-           //httpHeaders.status404(response);
+           console.dir(e);
+           Response.output(404, "html", "404 Not Found");
            return;
         }
 
