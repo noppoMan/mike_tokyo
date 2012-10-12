@@ -6,7 +6,8 @@ var url = require("url");
     //try{
 
         //アプリケーション初期化
-        var router = require("./app/config/router.js");
+        require("./system/server/response").setResponseObject(response);
+        
         var pathname = url.parse(request.url).pathname;
         var bootstrap = require("./app/config/bootstrap");
         bootstrap.init(request, response);
@@ -17,10 +18,13 @@ var url = require("url");
         share.SYSTEM_ROOT = env.SYSTEM_ROOT;
         share.APP_PATH = env.SYSTEM_ROOT + "app/";
         share.LIBRARY_PATH = env.SYSTEM_ROOT + "system/";
-        require("./system/server/response").setResponseObject(response);
 
-        var __CONTROLLER__ = router.default.controller;
-        var __ACTION__ = router.default.action;
+        var router = require("./system/server/router.js").req = request;
+        var Router = require("./app/config/router.js");
+
+
+        var __CONTROLLER__ = Router.controller;
+        var __ACTION__ = Router.action;
 
         if(pathname == "/favicon.ico"){
           response.end();
@@ -63,8 +67,8 @@ var url = require("url");
         try{
           var assignVars = eval("controllerInstance." + __ACTION__ + "Action()");
         }catch(e){
-           console.dir(e);
-           httpHeaders.status404(response);
+           //console.dir(e);
+           //httpHeaders.status404(response);
            return;
         }
 

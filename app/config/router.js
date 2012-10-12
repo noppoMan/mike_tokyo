@@ -1,8 +1,4 @@
-var router = {
-	default : {
-		controller : "app"
-		, action : "index"
-	}
-}
+var router = require("../../system/server/router.js");
+router.connect("/", "app/index");
 
 module.exports = router;

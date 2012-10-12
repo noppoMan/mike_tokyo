@@ -35,7 +35,7 @@ var view = {
 	  if(path !== undefined && path !== null){
 	    return templatePath += path;
 	  }else{
-	    return templatePath += share.__ACTION__ + this.viewExt;
+	    return templatePath += share.__CONTROLLER__ + "/" +  share.__ACTION__ + this.viewExt;
 	  }
 	}
 }

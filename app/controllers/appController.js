@@ -12,5 +12,9 @@ appController.prototype.indexAction = function(){
 	return {applicationName:"MikeTokyo" };
 }
 
+appController.prototype.testAction = function(){
+	
+}
+
 module.exports = appController;
 
