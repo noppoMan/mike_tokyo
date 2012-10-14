@@ -17,4 +17,3 @@ appController.prototype.testAction = function(){
 }
 
 module.exports = appController;
-

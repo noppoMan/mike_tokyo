@@ -19,6 +19,7 @@ var url = require("url");
         share.SYSTEM_ROOT = env.SYSTEM_ROOT;
         share.APP_PATH = env.SYSTEM_ROOT + "app/";
         share.LIBRARY_PATH = env.SYSTEM_ROOT + "system/";
+        share.contents_url = env.contents_url;
 
         var router = require("./system/server/router.js").req = request;
         var Router = require("./app/config/router.js");
@@ -67,11 +68,17 @@ var url = require("url");
 
         try{
           var assignVars = eval("controllerInstance." + __ACTION__ + "Action()");
+          if(typeof assignVars == "undefined"){
+            assignVars = {};
+          }
         }catch(e){
            console.dir(e);
            Response.output(404, "html", "404 Not Found");
            return;
         }
+
+        //グローバルに利用する変数をtemplateに渡す
+        assignVars.contents_url = share.contents_url;
 
         var view = require("./system/server/view");
         console.log("200 OK " + controllerInstance.headers.userAgent);

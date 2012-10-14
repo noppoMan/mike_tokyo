@@ -20,7 +20,6 @@ var view = {
 
 		var templatePath = this.createRenderPath(templatePath);
 		var layoutPath = share.APP_PATH + "views/layout/" + layoutPath + this.viewExt;
-		
 		fs.readFile(templatePath,"utf8", function(err,data){
         	var actionHtml = ejs.render(data,vars);
 	   		fs.readFile(layoutPath,"utf8", function(err,data2){

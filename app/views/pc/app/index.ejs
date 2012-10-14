@@ -1,6 +1,68 @@
+<!--
 <h1><%=applicationName %>：index</h1>
 
 
-<p><img src="/img/sp/common/logo.jpg"></p>
+<p><img src="<%=contents_url %>img/sp/common/logo_s.png"></p>
+
 
 <a href="/app/test">テストアクションへ</a>
+-->
+
+<style>
+body {
+	background-color: black;
+	width:100%;
+	height:100%;
+	color:#fff;
+}
+
+body a{
+	text-decoration:none;
+	color:#fff;
+}
+
+body a:hover {
+	color:#ffff00;	
+	text-decoration:none;
+}
+
+#container ul {
+	list-style:none;
+	text-align:center;
+	vertical-align:middle;
+}
+
+#container ul li {
+	display:inline;
+	margin-right:90px;
+	margin-top:40px;
+}
+
+
+#top_image {
+	clear:both;
+	text-align:center;
+	margin-top:30px;
+}
+
+#logo_s {
+	margin-top:20px;
+}
+
+</style>
+
+<section id="container">
+
+	<ul>
+		<li><a href="">NEWS</a></li>
+		<li><a href="">CAST</a></li>
+		<li><img src="<%=contents_url %>img/sp/common/logo_s.png"></li>
+		<li><a href="">PODCAST</a></li>
+		<li><a href="">CONTACT</a></li>
+	</ul>
+
+	<section id="top_image">
+		<img src="<%=contents_url %>img/sp/common/top_image.png">
+	</section>
+
+</section>
