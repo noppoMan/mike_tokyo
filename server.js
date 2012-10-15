@@ -47,14 +47,19 @@ var url = require("url");
         var className = __CONTROLLER__.charAt(0) + __CONTROLLER__.substring(1) + "Controller";
         var controllerInstance = null;
 
+        //コントローラーファイルの存在確認
+        var controllerPath = "./app/controllers/" + className;
+        var fs = require("fs"); 
         try{
-          var _controller = require("./app/controllers/" + className);
-          controllerInstance = new _controller();
+          var state = fs.statSync(controllerPath + ".js");
         }catch(e){
             console.dir(e);
             Response.output(404, "html", "404 Not Found");
             return;
         }
+
+        var _controller = require(controllerPath);
+        controllerInstance = new _controller();
 
 
         var ua = require('user-agent');
@@ -81,7 +86,6 @@ var url = require("url");
         assignVars.contents_url = share.contents_url;
 
         var view = require("./system/server/view");
-        console.log("200 OK " + controllerInstance.headers.userAgent);
         view.render(controllerInstance.layoutPath, controllerInstance.renderPath, assignVars, response);
     //}catch(e){
       //console.dir(e);
