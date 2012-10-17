@@ -84,6 +84,7 @@ var url = require("url");
 
         //グローバルに利用する変数をtemplateに渡す
         assignVars.contents_url = share.contents_url;
+        assignVars.base_url     = "http://" + request.headers.host + "/";
 
         var view = require("./system/server/view");
         view.render(controllerInstance.layoutPath, controllerInstance.renderPath, assignVars, response);
