@@ -1,0 +1,91 @@
+*{
+    font-size: 1.08em;
+    font-family: 'Klavika Regular', sans-serif;
+    list-style:none;
+    margin 0;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+    -webkit-padding-start: 0px;
+}
+
+body {
+    background-color: black;
+    width:99%;
+    color:#fff;
+}
+
+body a{
+    text-decoration:none;
+    color:#fff;
+}
+
+body a:hover {
+    color:#ffff00;  
+    text-decoration:none;
+}
+
+#container{
+    position:absolute;
+    top:60px;
+    font-size:small;
+    text-align:center;
+    width:99%;
+}
+#contents{
+    margin-left:auto;
+    margin-right:auto;
+    background:#000;
+    text-align:center;
+    width:960px;
+    margin:0px auto;
+}
+
+#top_image {
+    clear:both;
+    text-align:center;
+    margin-top:30px;
+}
+
+#logo_s {
+    margin-top:20px;
+}
+
+
+.g_menu ul {
+    margin-left:77px;
+    list-style: none;
+}
+.g_menu ul li {
+    float: left;
+    margin-right: 40px;
+    margin-bottom: 15px;
+}
+.g_menu ul li a {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 122px !important;
+    width: auto;
+    height: 92px !important;
+    height: auto;
+}
+.g_menu ul li a img {
+    margin-top:-20px;
+}
+
+.clear{
+    clear:both;
+}
+
+#main{
+    text-align:left;
+}
+
+
+#main_content{
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        box-shadow: 1px 1px 5px #621D87;
+        -webkit-box-shadow: 1px 1px 5px #621D87;
+        -moz-box-shadow: 1px 1px 5px #621D87;
+}

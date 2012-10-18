@@ -23,7 +23,9 @@ var view = {
 		fs.readFile(templatePath,"utf8", function(err,data){
         	var actionHtml = ejs.render(data,vars);
 	   		fs.readFile(layoutPath,"utf8", function(err,data2){
-	          var finalOutput = ejs.render(data2,{content : actionHtml, applicationName : share.config.applicationName});
+	   		  vars.content = actionHtml;
+	   		  vars.applicationName = share.config.applicationName;
+	          var finalOutput = ejs.render(data2,vars);
         	  Response.output(200, "html", finalOutput);
 	        });	
 

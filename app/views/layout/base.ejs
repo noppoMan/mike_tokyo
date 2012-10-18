@@ -3,8 +3,22 @@
 	<head>
 	<meta charset="UTF-8">
 	<title><%=applicationName %></title>
+	<link rel="stylesheet" href="/css/global.css" type="text/css">
 	</head>
 	<body>
-		<%-content %>
+		<section id="container">
+			<section id="contents">
+				<section class="g_menu">
+				    <ul>
+				        <li><a href="/official/news">NEWS</a></li>
+				        <li><a href="/official/cast">CAST</a></li>
+				        <li><a href="/"><img src="<%=contents_url %>img/sp/common/logo.jpg" width="129"></a></li>
+				        <li><a href="/official/podcast">PODCAST</a></li>
+				        <li><a href="mailto:info@miketokyo.com?subject=miketokyo.comへのご意見・お問い合わせ">CONTACT</a></li>
+				    </ul>
+				</section>
+				<%-content %>
+			</section>
+		</section>
 	</body>
 </html>
