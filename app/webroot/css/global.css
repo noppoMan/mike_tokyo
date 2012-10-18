@@ -78,14 +78,15 @@ body a:hover {
 }
 
 #main{
+    margin-left:110px;
     text-align:left;
 }
 
 
 #main_content{
-        -webkit-border-radius: 4px;
+       /* -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         box-shadow: 1px 1px 5px #621D87;
         -webkit-box-shadow: 1px 1px 5px #621D87;
-        -moz-box-shadow: 1px 1px 5px #621D87;
+        -moz-box-shadow: 1px 1px 5px #621D87;*/
 }
