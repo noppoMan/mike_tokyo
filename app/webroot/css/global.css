@@ -46,6 +46,14 @@ body a:hover {
     margin-top:30px;
 }
 
+a:hover img {
+    background-color:#000000;
+    filter:alpha(opacity=43);
+    -moz-opacity:0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+
 #logo_s {
     margin-top:20px;
 }
@@ -89,4 +97,16 @@ body a:hover {
         box-shadow: 1px 1px 5px #621D87;
         -webkit-box-shadow: 1px 1px 5px #621D87;
         -moz-box-shadow: 1px 1px 5px #621D87;*/
+}
+
+
+.method_st{
+    width:900px;
+    margin-left:50px;
+}
+
+.method_contain{
+    font-size:1em;
+    width:800px;
+    margin-left:100px;
 }
