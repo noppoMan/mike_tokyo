@@ -1,8 +1,8 @@
 @font-face {
-  font-family: 'Paytone One';
+  font-family: 'Klavika Regular';
   font-style: normal;
   font-weight: 400;
-  src: local('Paytone One'), local('PaytoneOne'), url(http://miketokyo.com/font/KlavikaRegular-OSF.ttf) format('woff');
+  src: local('Klavika Regular'), local('KlavikaRegular'), url(http://miketokyo.com/font/KlavikaRegular-OSF.ttf) format('ttf');
 }
 
 
