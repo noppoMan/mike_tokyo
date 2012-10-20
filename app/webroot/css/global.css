@@ -1,6 +1,14 @@
+/* Firefox, Opera, Safari */
+@font-face {
+    font-family: 'Klavika Regular', sans-serif;
+    src: url(/font/KlavikaRegular-OSF.ttf) format("truetype");
+}
+
+
+
 *{
     font-size: 1.08em;
-    font-family: 'Klavika Regular', sans-serif;
+    /*font-family: 'Klavika Regular', sans-serif;*/
     list-style:none;
     margin 0;
     letter-spacing: 0.07em;
