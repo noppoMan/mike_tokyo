@@ -1,12 +1,13 @@
-/* Firefox, Opera, Safari */
 @font-face {
-    font-family: 'Klavika Regular', sans-serif;
-    src: url(/font/KlavikaRegular-OSF.ttf) format("truetype");
+  font-family: 'Paytone One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Paytone One'), local('PaytoneOne'), url(http://miketokyo.com/font/KlavikaRegular-OSF.ttf) format('woff');
 }
 
 
-
 *{
+    font-family: 'Klavika Regular', sans-serif;
     font-size: 1.08em;
     /*font-family: 'Klavika Regular', sans-serif;*/
     list-style:none;
