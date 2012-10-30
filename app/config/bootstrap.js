@@ -5,6 +5,7 @@ var bootstrap = {
 		switch(req.headers.host){
 			case "localhost:3000":
 			case "localhost":
+			case "localhost:8888":
 				this.env = "localhost"
 				break;
 			default:
