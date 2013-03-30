@@ -7,8 +7,23 @@
 	}
 }*/
 
+var url = require("url");
 
 
-var dispatch = function(){
-	
+var dispatcher = function(){}
+
+dispatcher.prototype = {
+
+	run : function(req, res){
+		var pathname = url.parse(req.url).pathname;
+
+		console.log(pathname);
+		
+	}
+
 }
+
+
+module.exports = dispatcher;
+
+

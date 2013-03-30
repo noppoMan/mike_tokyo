@@ -4,7 +4,6 @@ var url = require("url");
 (function start() {
   function onRequest(request, response) {
     //try{
-
         //アプリケーション初期化
         var Response = require("./system/server/response")
         Response.setResponseObject(response);
@@ -94,6 +93,6 @@ var url = require("url");
       //return;
     //}
   }
-  http.createServer(onRequest).listen(3001);
+  http.createServer(onRequest).listen(3000);
   console.log("Server has started.");
 })();
